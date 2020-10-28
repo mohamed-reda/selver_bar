@@ -29,43 +29,50 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * .4 + 50,
-            child: Image.network(
-              url,
-              fit: BoxFit.cover,
+      body:
+//      put SingleChildScrollView here if you want the image to be moved with the scroll
+          SingleChildScrollView(
+        child: Stack(
+          children: <Widget>[
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 340,
+              child: Image.network(
+                url,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .4,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height * .6,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(50),
-                      topRight: Radius.circular(50),
-                    ),
-                    color: Colors.green),
-                child: Center(
-                  child: Text("Good morning Braken"),
+            //      put SingleChildScrollView here if you want the image to be fixed with the scroll
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                SizedBox(
+                  height: 300,
+                  width: MediaQuery.of(context).size.width,
                 ),
-              ),
-            ],
-          ),
-
-        ],
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50),
+                        topRight: Radius.circular(50),
+                      ),
+                      color: Colors.green),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text("Good morning Braken"),
+                      SizedBox(
+                        height: 400,
+                      ),
+                      Text("Good morning Braken"),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
